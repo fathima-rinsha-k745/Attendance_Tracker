@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Mark Attendance</h2>
+
+<form action="/attendance" method="POST">
+
+   {% for s in students %}
+<div class="attendance-row">
+    
+    <div class="student-name-box">
+        {{ s[1] }}
+    </div>
+
+    <select name="status_{{ s[0] }}" class="status-dropdown">
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+    </select>
+
+</div>
+{% endfor %}
+
+
+    <button type="submit">Submit Attendance</button>
+</form>
+
+<br>
+
+<a href="/clear_Attendance"><button class="clear-Attendance">Clear Attendance</button></a>
+
+<a href="/clear_students" class="btn danger">Clear All Students</a>
+
+{% endblock %}

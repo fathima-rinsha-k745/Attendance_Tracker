@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Attendance Report</h2>
+
+<table>
+    <tr>
+        <th>Roll no.</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+
+    {% for row in data %}
+    <tr>
+        <!-- Auto increment ID -->
+        <td>{{ loop.index }}</td>
+
+        <!-- Student name -->
+        <td>{{ row[0] }}</td>
+
+        <!-- Date -->
+        <td>{{ row[1] }}</td>
+
+        <!-- Status with color -->
+        <td
+            {% if row[2] and row[2].strip().lower() == 'absent' %}
+                style="color: red;"
+            {% else %}
+                style="color: green;"
+            {% endif %}
+        >
+            {{ row[2] }}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}
