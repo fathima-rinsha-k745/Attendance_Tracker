@@ -94,6 +94,7 @@ def clear_Attendance():
     conn.close()
 
     return redirect("/attendance")
+
 # ---------- CLEAR ALL STUDENTS ----------
 @app.route("/clear_students")
 def clear_students():
