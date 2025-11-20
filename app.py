@@ -84,7 +84,7 @@ def attendance():
 
     return render_template("attendance.html", students=students, title="Attendance")
 
-# ---------- CLEAR TODAY ----------
+# ---------- Clear Attendance----------
 @app.route("/clear_Attendance")
 def clear_Attendance():
     conn = sqlite3.connect("attendance.db")
@@ -94,6 +94,22 @@ def clear_Attendance():
     conn.close()
 
     return redirect("/attendance")
+# ---------- CLEAR ALL STUDENTS ----------
+@app.route("/clear_students")
+def clear_students():
+    conn = sqlite3.connect("attendance.db")
+    cur = conn.cursor()
+
+    # Delete attendance first (because it references student_id)
+    cur.execute("DELETE FROM attendance")
+
+    # Now delete students
+    cur.execute("DELETE FROM students")
+
+    conn.commit()
+    conn.close()
+
+    return redirect("/")
 
 
 # ---------- REPORT ----------
