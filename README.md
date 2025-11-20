@@ -1,5 +1,5 @@
 # 📘 Attendance Tracker (Flask Project) 
-
+ 
 The **Attendance Tracker** is a web-based application built using **Python Flask**.  
 It helps teachers **add students, mark daily attendance, view reports, and manage records** easily.  
 The project uses **SQLite** as its database and provides a clean, modern, and user-friendly interface.
